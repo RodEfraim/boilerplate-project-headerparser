@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html>
+
+   <head>
+
+   </head>
+
+   <body>
+
+    <div>
+
+        <!-- <p>language: <span id="language"></span></p> -->
+        <!-- <p>connection: <span id="connection"></span></p>
+        <p>appVersion: <span id="appVersion"></span></p>
+        <p>appName: <span id="appName"></span></p>
+        <p>platform: <span id="platform"></span></p>
+        <p>appCodeName: <span id="appCodeName"></span></p>
+        <p>onLine: <span id="onLine"></span></p>
+        <p>userAgent: <span id="userAgent"></span></p>
+        <p>ip: <span id="ip"></span></p> -->
+
+        <!-- <p><span id="demo"></span></p> -->
+        <pre id="json"></pre>
+
+    </div>
+
+    <script>
+        let language = navigator.language;
+        //document.getElementById("language").innerHTML = language;
+
+        let connection = navigator.connection;
+        //document.getElementById("connection").innerHTML = connection;
+
+        let appVersion = navigator.appVersion;
+        //document.getElementById("appVersion").innerHTML = appVersion;
+
+        let appName = navigator.appName;
+        //document.getElementById("appName").innerHTML = appName;
+
+        let platform = navigator.platform;
+        //document.getElementById("platform").innerHTML = platform;
+
+        let appCodeName = navigator.appCodeName;
+        //document.getElementById("appCodeName").innerHTML = appCodeName;
+
+        let onLine = navigator.onLine;
+        //document.getElementById("onLine").innerHTML = onLine;
+
+        let userAgent = navigator.userAgent;
+        //document.getElementById("userAgent").innerHTML = userAgent;
+
+        //alert("navigate.appName: " + navigator.appName);
+        //alert("navigator.language: " + navigator.language);
+    </script>
+
+    <script type="application/javascript">
+        function getIP(json) {
+            //document.write("My public IP address is: ", json.ip);
+            //document.write("ipaddress: " + ip + ", ","language: " + language + ", ")
+
+            let ip = json.ip;
+            //document.getElementById("ip").innerHTML = ip;
+
+            var demoP = document.getElementById("demo");
+            var html = "";
+            html += "{\"ipaddress\":\"" + ip + "\",\"language\":\"" + language + "\",\"software\":\"" + userAgent + "\"}";
+            //demoP.innerHTML = html;
+
+            /*var data = {
+                "data": {
+                    "x": ip,
+                    "y": language,
+                    "url": userAgent
+                },
+                "event": "start",
+                "show": 1,
+                "id": 50
+            }
+            document.getElementById("json").textContent = JSON.stringify(data, undefined, 2);*/
+
+
+            var data = {
+                "ipaddress": ip,
+                "language": language,
+                "software": userAgent
+            }
+            document.getElementById("json").textContent = JSON.stringify(data, undefined, 2);
+
+        }
+    </script>
+  
+    <script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+
+   </body>
+
+</html>
